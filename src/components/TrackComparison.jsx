@@ -17,7 +17,7 @@ export default function TrackComparison() {
   const [activeView, setActiveView] = useState('both'); // 'both', 'software', 'hardware'
 
   return (
-    <section id="tracks" className="section" style={{ background: 'rgba(11, 15, 25, 0.5)' }}>
+    <section id="tracks" className="section" style={{ background: '#f1f5f9' }}>
       <div className="container">
         
         <div className="section-header">
@@ -68,8 +68,8 @@ export default function TrackComparison() {
           {(activeView === 'both' || activeView === 'software') && (
             <div className="glass-card" style={{
               padding: '2.5rem',
-              borderTop: '4px solid #06b6d4',
-              background: 'linear-gradient(180deg, rgba(6, 182, 212, 0.06) 0%, rgba(16, 20, 31, 0.95) 100%)'
+              borderTop: '4px solid #0284c7',
+              background: '#ffffff'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -77,8 +77,8 @@ export default function TrackComparison() {
                     width: '48px',
                     height: '48px',
                     borderRadius: '14px',
-                    background: 'rgba(6, 182, 212, 0.2)',
-                    color: '#38bdf8',
+                    background: '#e0f2fe',
+                    color: '#0284c7',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -86,8 +86,8 @@ export default function TrackComparison() {
                     <Code2 size={28} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>💻 Software Track</h3>
-                    <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Cloud, AI/ML, Cyber & Full-Stack</span>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a' }}>💻 Software Track</h3>
+                    <span style={{ fontSize: '0.85rem', color: '#64748b' }}>Cloud, AI/ML, Cyber & Full-Stack</span>
                   </div>
                 </div>
 
@@ -100,18 +100,19 @@ export default function TrackComparison() {
 
               {/* Technologies Included */}
               <div style={{ marginBottom: '1.5rem' }}>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
                   Technologies & Domains:
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                   {['Artificial Intelligence', 'Machine Learning', 'Web Applications', 'Mobile Apps', 'Cloud Computing', 'Data Science', 'Cybersecurity', 'Blockchain & Web3'].map((tech) => (
                     <span key={tech} style={{
                       fontSize: '0.75rem',
-                      padding: '0.25rem 0.6rem',
+                      padding: '0.25rem 0.65rem',
                       borderRadius: '6px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      color: '#cbd5e1'
+                      background: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      color: '#334155',
+                      fontWeight: 600
                     }}>
                       {tech}
                     </span>
@@ -121,33 +122,33 @@ export default function TrackComparison() {
 
               {/* Release Strategy & Rules */}
               <div style={{
-                background: 'rgba(2, 6, 23, 0.6)',
-                border: '1px solid rgba(6, 182, 212, 0.2)',
+                background: '#f0f9ff',
+                border: '1px solid #bae6fd',
                 borderRadius: '12px',
                 padding: '1.25rem',
                 marginBottom: '1.5rem'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#38bdf8', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#0369a1', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.5rem' }}>
                   <Clock size={16} /> Release Strategy: Venue Launch Only
                 </div>
-                <p style={{ fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.875rem', color: '#334155', lineHeight: 1.6 }}>
                   Problem statements are kept confidential until the opening ceremony of VISAI 2027. Teams will receive their problem statement directly at their hacking station. No pre-written code repositories are permitted; all Git commits must originate during the official 36 / 48 hours.
                 </p>
               </div>
 
               {/* Journey Checklist */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.85rem', color: '#cbd5e1' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.875rem', color: '#1e293b' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#06b6d4" /> Understand Problem & Ideate Architecture (0 - 4h)
+                  <Check size={16} color="#0284c7" /> Understand Problem & Ideate Architecture (0 - 4h)
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#06b6d4" /> API, Model Training & Core Feature Coding (4 - 24h)
+                  <Check size={16} color="#0284c7" /> API, Model Training & Core Feature Coding (4 - 24h)
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#06b6d4" /> Testing, Dockerization & Live Cloud Deployment (24 - 36h)
+                  <Check size={16} color="#0284c7" /> Testing, Dockerization & Live Cloud Deployment (24 - 36h)
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#06b6d4" /> Final Abstract Submission for VISAI Souvenir Publication
+                  <Check size={16} color="#0284c7" /> Final Abstract Submission for VISAI Souvenir Publication
                 </div>
               </div>
             </div>
@@ -157,8 +158,8 @@ export default function TrackComparison() {
           {(activeView === 'both' || activeView === 'hardware') && (
             <div className="glass-card" style={{
               padding: '2.5rem',
-              borderTop: '4px solid #10b981',
-              background: 'linear-gradient(180deg, rgba(16, 185, 129, 0.06) 0%, rgba(16, 20, 31, 0.95) 100%)'
+              borderTop: '4px solid #059669',
+              background: '#ffffff'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -166,8 +167,8 @@ export default function TrackComparison() {
                     width: '48px',
                     height: '48px',
                     borderRadius: '14px',
-                    background: 'rgba(16, 185, 129, 0.2)',
-                    color: '#34d399',
+                    background: '#d1fae5',
+                    color: '#059669',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -175,8 +176,8 @@ export default function TrackComparison() {
                     <Cpu size={28} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>🔧 Hardware Track</h3>
-                    <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>IoT, Robotics, Sensors & Embedded</span>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a' }}>🔧 Hardware Track</h3>
+                    <span style={{ fontSize: '0.85rem', color: '#64748b' }}>IoT, Robotics, Sensors & Embedded</span>
                   </div>
                 </div>
 
@@ -189,18 +190,19 @@ export default function TrackComparison() {
 
               {/* Technologies Included */}
               <div style={{ marginBottom: '1.5rem' }}>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
                   Technologies & Domains:
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                   {['Internet of Things (IoT)', 'Embedded Systems', 'Industrial Robotics', 'Smart Sensors', 'Automation & PLC', 'Smart Devices', 'Power Electronics', 'Wearables'].map((tech) => (
                     <span key={tech} style={{
                       fontSize: '0.75rem',
-                      padding: '0.25rem 0.6rem',
+                      padding: '0.25rem 0.65rem',
                       borderRadius: '6px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      color: '#cbd5e1'
+                      background: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      color: '#334155',
+                      fontWeight: 600
                     }}>
                       {tech}
                     </span>
@@ -210,33 +212,33 @@ export default function TrackComparison() {
 
               {/* Release Strategy & Rules */}
               <div style={{
-                background: 'rgba(2, 6, 23, 0.6)',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
+                background: '#ecfdf5',
+                border: '1px solid #a7f3d0',
                 borderRadius: '12px',
                 padding: '1.25rem',
                 marginBottom: '1.5rem'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#34d399', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#047857', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.5rem' }}>
                   <Zap size={16} /> Release Strategy: 7–10 Days Early Window
                 </div>
-                <p style={{ fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.875rem', color: '#334155', lineHeight: 1.6 }}>
                   Released 7-10 days prior so shortlisted teams can conduct research, design circuit schematics, and arrange components. <strong>Important:</strong> Fully assembled prototypes built prior to the event are disqualified. Assembly, wiring, firmware flashing, and calibration must take place live at the venue.
                 </p>
               </div>
 
               {/* Journey Checklist */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.85rem', color: '#cbd5e1' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.875rem', color: '#1e293b' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#10b981" /> Component Procurement & Architecture Planning (Pre-event)
+                  <Check size={16} color="#059669" /> Component Procurement & Architecture Planning (Pre-event)
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#10b981" /> Coordinator Hardware Safety Clearance & Check-in
+                  <Check size={16} color="#059669" /> Coordinator Hardware Safety Clearance & Check-in
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#10b981" /> Physical Prototyping, Soldering & Firmware Bench Test (0 - 36h)
+                  <Check size={16} color="#059669" /> Physical Prototyping, Soldering & Firmware Bench Test (0 - 36h)
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={16} color="#10b981" /> Final Abstract Submission & Grand Jury Working Demo
+                  <Check size={16} color="#059669" /> Final Abstract Submission & Grand Jury Working Demo
                 </div>
               </div>
             </div>

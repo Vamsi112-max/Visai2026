@@ -35,14 +35,15 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
       position: 'sticky',
       top: 0,
       zIndex: 50,
-      background: 'rgba(7, 9, 14, 0.88)',
+      background: 'rgba(255, 255, 255, 0.92)',
       backdropFilter: 'blur(16px)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+      borderBottom: '1px solid #e2e8f0',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.04)'
     }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.9rem 1.5rem' }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.85rem 1.5rem' }}>
         
         {/* Brand & Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer' }} onClick={() => setActiveTab('overview')}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', cursor: 'pointer' }} onClick={() => setActiveTab('overview')}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
@@ -50,32 +51,32 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
             width: '42px',
             height: '42px',
             borderRadius: '12px',
-            background: 'linear-gradient(135deg, #0284c7 0%, #6366f1 100%)',
+            background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
             color: '#fff',
             fontWeight: 800,
             fontSize: '1.25rem',
-            boxShadow: '0 0 15px rgba(56, 189, 248, 0.4)'
+            boxShadow: '0 4px 12px rgba(37, 99, 235, 0.25)'
           }}>
             V
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 800, letterSpacing: '-0.03em', color: '#fff' }}>
-                VISAI <span style={{ color: '#38bdf8' }}>2027</span>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 800, letterSpacing: '-0.03em', color: '#0f172a' }}>
+                VISAI <span style={{ color: '#2563eb' }}>2027</span>
               </span>
               <span style={{
                 fontSize: '0.65rem',
                 padding: '0.15rem 0.45rem',
                 borderRadius: '4px',
-                background: 'rgba(56, 189, 248, 0.15)',
-                color: '#38bdf8',
+                background: '#eff6ff',
+                color: '#2563eb',
                 fontWeight: 700,
-                border: '1px solid rgba(56, 189, 248, 0.3)'
+                border: '1px solid #bfdbfe'
               }}>
                 17th Edition
               </span>
             </div>
-            <div style={{ fontSize: '0.725rem', color: '#94a3b8', letterSpacing: '0.01em' }}>
+            <div style={{ fontSize: '0.725rem', color: '#64748b', letterSpacing: '0.01em' }}>
               Vel Tech R&D Institute • 36/48-Hour SDG Hackathon
             </div>
           </div>
@@ -90,7 +91,7 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
               style={{
                 background: 'none',
                 border: 'none',
-                color: activeTab === item.id ? '#38bdf8' : '#94a3b8',
+                color: activeTab === item.id ? '#2563eb' : '#475569',
                 fontWeight: activeTab === item.id ? 700 : 500,
                 fontSize: '0.875rem',
                 cursor: 'pointer',
@@ -107,7 +108,7 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
                   left: '10%',
                   right: '10%',
                   height: '2px',
-                  background: '#38bdf8',
+                  background: '#2563eb',
                   borderRadius: '2px'
                 }} />
               )}
@@ -125,7 +126,7 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
                 style={{
                   background: currentCred?.color || '#2563eb',
                   color: '#fff',
-                  boxShadow: `0 0 15px ${currentCred?.color || '#2563eb'}66`,
+                  boxShadow: `0 2px 10px ${currentCred?.color || '#2563eb'}55`,
                   border: 'none'
                 }}
               >
@@ -159,7 +160,7 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
             style={{
               background: 'none',
               border: 'none',
-              color: '#fff',
+              color: '#0f172a',
               cursor: 'pointer',
               display: 'flex',
               padding: '0.3rem'
@@ -174,9 +175,10 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div style={{
-          background: '#090d16',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-          padding: '1.25rem'
+          background: '#ffffff',
+          borderBottom: '1px solid #e2e8f0',
+          padding: '1.25rem',
+          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {navItems.map((item) => (
@@ -190,7 +192,7 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
                   background: 'none',
                   border: 'none',
                   textAlign: 'left',
-                  color: activeTab === item.id ? '#38bdf8' : '#94a3b8',
+                  color: activeTab === item.id ? '#2563eb' : '#475569',
                   padding: '0.5rem 0',
                   fontSize: '1rem',
                   fontWeight: 600,
@@ -201,7 +203,7 @@ export default function Navbar({ activeTab, setActiveTab, currentRole, onLogout,
               </button>
             ))}
 
-            <div style={{ paddingTop: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+            <div style={{ paddingTop: '0.75rem', borderTop: '1px solid #e2e8f0' }}>
               <button
                 onClick={() => {
                   onOpenAuthModal();

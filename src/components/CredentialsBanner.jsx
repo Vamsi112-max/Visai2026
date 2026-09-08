@@ -1,6 +1,6 @@
 import React from 'react';
 import { DEMO_CREDENTIALS } from '../data/visaiData';
-import { ShieldCheck, UserCheck, Award, Wrench, Key } from 'lucide-react';
+import { ShieldCheck, UserCheck, Award, Wrench, Key, Globe } from 'lucide-react';
 
 const roleIcons = {
   admin: ShieldCheck,
@@ -9,7 +9,7 @@ const roleIcons = {
   coordinator: Wrench
 };
 
-export default function CredentialsBanner({ currentRole, onSelectRole, onOpenAuthModal }) {
+export default function CredentialsBanner({ currentRole, onSelectRole, onOpenAuthModal, onResetToPublic }) {
   return (
     <div className="credentials-bar">
       <div className="container inner">
@@ -18,7 +18,7 @@ export default function CredentialsBanner({ currentRole, onSelectRole, onOpenAut
             <Key size={14} /> DEMO LOGIN CREDENTIALS:
           </span>
           <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
-            Click any role to log in instantly or view credentials:
+            Click any role to test dashboard directly:
           </span>
         </div>
 
@@ -42,10 +42,32 @@ export default function CredentialsBanner({ currentRole, onSelectRole, onOpenAut
               >
                 <Icon size={13} />
                 <span>{cred.badge}</span>
-                <span style={{ opacity: 0.6, fontSize: '0.7rem' }}>({cred.password})</span>
+                <span style={{ opacity: 0.75, fontSize: '0.7rem', color: '#fbbf24' }}>({cred.password})</span>
               </button>
             );
           })}
+
+          {currentRole && (
+            <button
+              onClick={onResetToPublic}
+              style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#34d399',
+                borderRadius: '9999px',
+                padding: '0.25rem 0.65rem',
+                fontSize: '0.75rem',
+                cursor: 'pointer',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.3rem'
+              }}
+            >
+              <Globe size={12} />
+              <span>Public View</span>
+            </button>
+          )}
 
           <button
             onClick={() => onOpenAuthModal()}

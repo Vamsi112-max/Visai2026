@@ -68,7 +68,7 @@ export default function ProblemStatements({ onSelectProblem }) {
           }}>
             {/* Search Input */}
             <div style={{ position: 'relative', minWidth: '260px', flex: 1 }}>
-              <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+              <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
               <input
                 type="text"
                 placeholder="Search by code (e.g. VISAI-SDG06-IND01), title, or company..."
@@ -81,7 +81,7 @@ export default function ProblemStatements({ onSelectProblem }) {
 
             {/* Track Filter Buttons */}
             <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 600 }}>Track:</span>
+              <span style={{ fontSize: '0.825rem', color: '#475569', fontWeight: 600 }}>Track:</span>
               <button
                 onClick={() => setSelectedTrack('all')}
                 className={`btn btn-sm ${selectedTrack === 'all' ? 'btn-primary' : 'btn-secondary'}`}
@@ -104,7 +104,7 @@ export default function ProblemStatements({ onSelectProblem }) {
 
             {/* SDG Dropdown */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 600 }}>SDG:</span>
+              <span style={{ fontSize: '0.825rem', color: '#475569', fontWeight: 600 }}>SDG:</span>
               <select
                 value={selectedSdg}
                 onChange={(e) => setSelectedSdg(e.target.value)}
@@ -141,7 +141,7 @@ export default function ProblemStatements({ onSelectProblem }) {
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   cursor: 'pointer',
-                  borderTop: `4px solid ${problem.sdgColor || '#38bdf8'}`
+                  borderTop: `4px solid ${problem.sdgColor || '#2563eb'}`
                 }}
                 onClick={() => setActiveModalProblem(problem)}
               >
@@ -152,11 +152,11 @@ export default function ProblemStatements({ onSelectProblem }) {
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.85rem',
                       fontWeight: 700,
-                      color: problem.sdgColor || '#38bdf8',
-                      background: 'rgba(255, 255, 255, 0.05)',
+                      color: problem.sdgColor || '#2563eb',
+                      background: '#f8fafc',
                       padding: '0.2rem 0.6rem',
                       borderRadius: '6px',
-                      border: '1px solid rgba(255, 255, 255, 0.1)'
+                      border: '1px solid #e2e8f0'
                     }}>
                       {problem.code}
                     </span>
@@ -181,16 +181,16 @@ export default function ProblemStatements({ onSelectProblem }) {
                     fontWeight: 700,
                     lineHeight: 1.4,
                     marginBottom: '0.75rem',
-                    color: '#fff'
+                    color: '#0f172a'
                   }}>
                     {problem.title}
                   </h3>
 
                   {/* Partner & SDG info */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.825rem', color: '#94a3b8', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.825rem', color: '#64748b', marginBottom: '1rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <Building size={14} color="#38bdf8" />
-                      <span style={{ color: '#cbd5e1', fontWeight: 600 }}>{problem.industryPartner}</span>
+                      <Building size={14} color="#2563eb" />
+                      <span style={{ color: '#1e293b', fontWeight: 600 }}>{problem.industryPartner}</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                       <span style={{
@@ -206,8 +206,8 @@ export default function ProblemStatements({ onSelectProblem }) {
 
                   {/* Description Preview */}
                   <p style={{
-                    fontSize: '0.85rem',
-                    color: '#cbd5e1',
+                    fontSize: '0.875rem',
+                    color: '#475569',
                     lineHeight: 1.55,
                     marginBottom: '1.25rem',
                     display: '-webkit-box',
@@ -226,11 +226,11 @@ export default function ProblemStatements({ onSelectProblem }) {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     paddingTop: '1rem',
-                    borderTop: '1px solid var(--border-subtle)',
+                    borderTop: '1px solid #f1f5f9',
                     fontSize: '0.8rem'
                   }}>
                     <span style={{
-                      color: isSoftware ? '#38bdf8' : '#34d399',
+                      color: isSoftware ? '#0284c7' : '#059669',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.35rem',
@@ -268,10 +268,11 @@ export default function ProblemStatements({ onSelectProblem }) {
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.9rem',
                       fontWeight: 800,
-                      color: activeModalProblem.sdgColor || '#38bdf8',
-                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: activeModalProblem.sdgColor || '#2563eb',
+                      background: '#f1f5f9',
                       padding: '0.2rem 0.6rem',
-                      borderRadius: '6px'
+                      borderRadius: '6px',
+                      border: '1px solid #cbd5e1'
                     }}>
                       {activeModalProblem.code}
                     </span>
@@ -284,7 +285,7 @@ export default function ProblemStatements({ onSelectProblem }) {
                       {activeModalProblem.track} Track
                     </span>
                   </div>
-                  <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#fff' }}>
+                  <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#0f172a' }}>
                     {activeModalProblem.title}
                   </h2>
                 </div>
@@ -302,40 +303,40 @@ export default function ProblemStatements({ onSelectProblem }) {
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                   gap: '1rem',
-                  background: 'rgba(2, 6, 23, 0.7)',
-                  padding: '1rem',
+                  background: '#f8fafc',
+                  padding: '1.15rem',
                   borderRadius: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                  border: '1px solid #e2e8f0'
                 }}>
                   <div>
-                    <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Industry Partner</div>
-                    <div style={{ fontWeight: 700, color: '#38bdf8' }}>{activeModalProblem.industryPartner}</div>
+                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Industry Partner</div>
+                    <div style={{ fontWeight: 700, color: '#1d4ed8' }}>{activeModalProblem.industryPartner}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>SDG Mapping</div>
+                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>SDG Mapping</div>
                     <div style={{ fontWeight: 700, color: activeModalProblem.sdgColor }}>
                       {activeModalProblem.sdgCode} – {activeModalProblem.sdgName}
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Mentor / Evaluator</div>
-                    <div style={{ fontWeight: 600, color: '#cbd5e1' }}>{activeModalProblem.mentor}</div>
+                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Mentor / Evaluator</div>
+                    <div style={{ fontWeight: 600, color: '#1e293b' }}>{activeModalProblem.mentor}</div>
                   </div>
                 </div>
 
                 {/* Problem Description */}
                 <div>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.5rem' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginBottom: '0.5rem' }}>
                     Full Challenge Description
                   </h4>
-                  <p style={{ fontSize: '0.9rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                  <p style={{ fontSize: '0.9rem', color: '#334155', lineHeight: 1.65 }}>
                     {activeModalProblem.description}
                   </p>
                 </div>
 
                 {/* Tech Stack */}
                 <div>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.5rem' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginBottom: '0.5rem' }}>
                     Recommended Technologies & Tooling
                   </h4>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -343,9 +344,9 @@ export default function ProblemStatements({ onSelectProblem }) {
                       <span key={t} style={{
                         padding: '0.3rem 0.7rem',
                         borderRadius: '6px',
-                        background: 'rgba(56, 189, 248, 0.1)',
-                        border: '1px solid rgba(56, 189, 248, 0.25)',
-                        color: '#38bdf8',
+                        background: '#eff6ff',
+                        border: '1px solid #bfdbfe',
+                        color: '#1d4ed8',
                         fontSize: '0.8rem',
                         fontWeight: 600
                       }}>
@@ -357,18 +358,18 @@ export default function ProblemStatements({ onSelectProblem }) {
 
                 {/* Impact & Industry Opportunity */}
                 <div style={{
-                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 20, 31, 0.6) 100%)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
+                  background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
+                  border: '1px solid #fde68a',
                   padding: '1.25rem',
                   borderRadius: '12px'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fbbf24', fontWeight: 700, marginBottom: '0.4rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#b45309', fontWeight: 700, marginBottom: '0.4rem' }}>
                     <Sparkles size={16} /> Industry Sponsor Offer & Patent Opportunity
                   </div>
-                  <p style={{ fontSize: '0.875rem', color: '#cbd5e1', marginBottom: '0.4rem' }}>
+                  <p style={{ fontSize: '0.875rem', color: '#78350f', marginBottom: '0.4rem' }}>
                     <strong>Offer:</strong> {activeModalProblem.industryOffer}
                   </p>
-                  <p style={{ fontSize: '0.875rem', color: '#cbd5e1' }}>
+                  <p style={{ fontSize: '0.875rem', color: '#78350f' }}>
                     <strong>Expected Impact:</strong> {activeModalProblem.impact}
                   </p>
                 </div>
@@ -398,9 +399,9 @@ export default function ProblemStatements({ onSelectProblem }) {
                   <div style={{
                     padding: '0.75rem 1rem',
                     borderRadius: '8px',
-                    background: 'rgba(16, 185, 129, 0.15)',
-                    border: '1px solid rgba(16, 185, 129, 0.3)',
-                    color: '#34d399',
+                    background: '#ecfdf5',
+                    border: '1px solid #a7f3d0',
+                    color: '#065f46',
                     fontSize: '0.85rem',
                     display: 'flex',
                     alignItems: 'center',

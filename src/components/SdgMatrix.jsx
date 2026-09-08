@@ -6,7 +6,7 @@ export default function SdgMatrix({ onFilterBySdg }) {
   const [activeSdg, setActiveSdg] = useState(null);
 
   return (
-    <section id="sdgs" className="section" style={{ background: 'rgba(15, 23, 42, 0.4)' }}>
+    <section id="sdgs" className="section" style={{ background: '#f1f5f9' }}>
       <div className="container">
         
         <div className="section-header">
@@ -45,7 +45,7 @@ export default function SdgMatrix({ onFilterBySdg }) {
                   padding: '1.25rem',
                   borderLeft: `5px solid ${sdg.color}`,
                   cursor: 'pointer',
-                  background: isHovered ? 'rgba(30, 41, 59, 0.9)' : 'rgba(16, 20, 31, 0.75)',
+                  background: isHovered ? '#eff6ff' : '#ffffff',
                   transform: isHovered ? 'translateY(-4px)' : 'none',
                   transition: 'all 0.25s ease'
                 }}
@@ -64,9 +64,9 @@ export default function SdgMatrix({ onFilterBySdg }) {
                       fontSize: '0.7rem',
                       padding: '0.15rem 0.45rem',
                       borderRadius: '9999px',
-                      background: `${sdg.color}22`,
+                      background: `${sdg.color}18`,
                       color: sdg.color,
-                      border: `1px solid ${sdg.color}55`,
+                      border: `1px solid ${sdg.color}44`,
                       fontWeight: 700
                     }}>
                       {problemCount} Challenges
@@ -78,7 +78,7 @@ export default function SdgMatrix({ onFilterBySdg }) {
                   fontSize: '0.95rem',
                   fontWeight: 700,
                   lineHeight: 1.35,
-                  color: '#fff',
+                  color: '#0f172a',
                   marginBottom: '0.5rem',
                   minHeight: '2.7rem'
                 }}>
@@ -87,11 +87,11 @@ export default function SdgMatrix({ onFilterBySdg }) {
 
                 <div style={{
                   fontSize: '0.75rem',
-                  color: '#94a3b8',
+                  color: '#2563eb',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.25rem',
-                  fontWeight: 600
+                  fontWeight: 700
                 }}>
                   <span>Explore Problems</span>
                   <ArrowUpRight size={12} />
@@ -103,9 +103,9 @@ export default function SdgMatrix({ onFilterBySdg }) {
 
         {/* SDG Focus Banner */}
         <div className="glass-card" style={{
-          padding: '2rem 2.5rem',
-          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%)',
-          border: '1px solid rgba(16, 185, 129, 0.25)',
+          padding: '2.25rem 2.5rem',
+          background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfeff 100%)',
+          border: '1px solid #a7f3d0',
           borderRadius: '16px'
         }}>
           <div style={{
@@ -115,29 +115,29 @@ export default function SdgMatrix({ onFilterBySdg }) {
             alignItems: 'center'
           }}>
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#34d399', fontWeight: 700, marginBottom: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#047857', fontWeight: 700, marginBottom: '0.5rem' }}>
                 <Sparkles size={18} />
                 <span>Why SDG Mapping Matters for Students</span>
               </div>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', marginBottom: '0.75rem' }}>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.75rem' }}>
                 Accreditation & Global Innovation Recognition
               </h3>
-              <p style={{ fontSize: '0.9rem', color: '#cbd5e1', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9rem', color: '#334155', lineHeight: 1.65 }}>
                 Participation in VISAI earns students and participating universities prestigious credentials with accreditation bodies such as <strong>NAAC</strong> and <strong>NBA</strong>. Furthermore, top teams gain international visibility and patent acceleration via Vel Tech R&D Institute.
               </p>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
-                <CheckCircle2 size={18} color="#10b981" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.9rem', color: '#1e293b', fontWeight: 600 }}>
+                <CheckCircle2 size={18} color="#059669" />
                 <span>Direct mentorship from MNC R&D Directors</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
-                <CheckCircle2 size={18} color="#10b981" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.9rem', color: '#1e293b', fontWeight: 600 }}>
+                <CheckCircle2 size={18} color="#059669" />
                 <span>Vel Tech Sponsored International Trip to Malaysia for top teams</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
-                <CheckCircle2 size={18} color="#10b981" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.9rem', color: '#1e293b', fontWeight: 600 }}>
+                <CheckCircle2 size={18} color="#059669" />
                 <span>Publication in the Official VISAI 2027 Innovation Souvenir</span>
               </div>
             </div>
