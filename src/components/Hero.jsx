@@ -9,8 +9,67 @@ import {
   BookOpen, 
   Globe, 
   CheckCircle2,
-  FileText
+  FileText,
+  ChevronLeft,
+  ChevronRight,
+  Plane,
+  Building,
+  Layers,
+  Award
 } from 'lucide-react';
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    badge: "17th Edition Landmark Model",
+    title: "From Project Expo to 36 / 48-Hour High-Impact Hackathon",
+    subtitle: "Students solve real-world problems under time constraints, collaborate directly with MNCs, and develop practical commercial solutions.",
+    highlight: "Real Problems. Real Innovation. Real Impact.",
+    icon: Layers,
+    color: "#2563eb",
+    bgTint: "#eff6ff"
+  },
+  {
+    id: 2,
+    badge: "Global Recognition & Incentives",
+    title: "₹5 Lakhs+ Cash Grants & Sponsored International Trip to Malaysia",
+    subtitle: "Vel Tech fully funds the top 2 performing student teams to present their engineering achievements at a leading Malaysian university.",
+    highlight: "Plus patent filing assistance & Vel Tech TBI pre-seed incubation.",
+    icon: Plane,
+    color: "#d97706",
+    bgTint: "#fffbeb"
+  },
+  {
+    id: 3,
+    badge: "Industry Problem Statements",
+    title: "42+ Real Challenges from Ashok Leyland, Renault Nissan & L&T",
+    subtitle: "Thirteen leading automotive, energy, and tech corporations have provided authentic industrial engineering challenges mapped to UN SDGs.",
+    highlight: "Direct internship, pre-placement, and pilot contract opportunities.",
+    icon: Building,
+    color: "#059669",
+    bgTint: "#f0fdf4"
+  },
+  {
+    id: 4,
+    badge: "Dual Track Release Strategy",
+    title: "Software (On-Spot Venue) vs Hardware (7-10 Days Prior)",
+    subtitle: "Software teams build everything from scratch during the hackathon; Hardware teams receive challenges early for component sourcing & research.",
+    highlight: "Strict anti-plagiarism and live bench prototype verification.",
+    icon: Code2,
+    color: "#0284c7",
+    bgTint: "#f0f9ff"
+  },
+  {
+    id: 5,
+    badge: "Automated Digital Publication",
+    title: "Official VISAI 2027 Innovation Souvenir & Project Book",
+    subtitle: "Every approved innovation is automatically structured, peer-reviewed, and published into the permanent VISAI compendium.",
+    highlight: "Official NAAC / NBA accredited innovation documentation.",
+    icon: BookOpen,
+    color: "#7c3aed",
+    bgTint: "#f5f3ff"
+  }
+];
 
 export default function Hero({ onExploreProblems, onEnterPortal, onOpenSouvenir }) {
   // Live Countdown state to VISAI Hackathon Kickoff
@@ -20,6 +79,8 @@ export default function Hero({ onExploreProblems, onEnterPortal, onOpenSouvenir 
     minutes: 38,
     seconds: 19
   });
+
+  const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -32,6 +93,16 @@ export default function Hero({ onExploreProblems, onEnterPortal, onOpenSouvenir 
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % HERO_SLIDES.length);
+    }, 5500);
+    return () => clearInterval(slideTimer);
+  }, []);
+
+  const currentHeroSlide = HERO_SLIDES[activeSlide];
+  const IconComponent = currentHeroSlide.icon;
 
   return (
     <section className="section" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem', overflow: 'hidden' }}>
@@ -77,7 +148,7 @@ export default function Hero({ onExploreProblems, onEnterPortal, onOpenSouvenir 
           justifyContent: 'center',
           gap: '1rem',
           flexWrap: 'wrap',
-          marginBottom: '3rem'
+          marginBottom: '2.5rem'
         }}>
           <button onClick={onExploreProblems} className="btn btn-lg btn-primary">
             <span>Explore Industry Challenges</span>
@@ -92,6 +163,97 @@ export default function Hero({ onExploreProblems, onEnterPortal, onOpenSouvenir 
             <BookOpen size={18} />
             <span>Innovation Souvenir Book</span>
           </button>
+        </div>
+
+        {/* MULTI-SLIDE SHOWCASE CAROUSEL (Hero Presentation Slides) */}
+        <div className="glass-card" style={{
+          padding: '2rem 2.5rem',
+          maxWidth: '1080px',
+          margin: '0 auto 3rem',
+          background: currentHeroSlide.bgTint,
+          border: `2px solid ${currentHeroSlide.color}33`,
+          borderRadius: '20px',
+          boxShadow: '0 12px 36px -8px rgba(15, 23, 42, 0.08)',
+          position: 'relative'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '10px',
+                background: currentHeroSlide.color,
+                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <IconComponent size={22} />
+              </div>
+              <span style={{
+                fontSize: '0.8rem',
+                fontWeight: 800,
+                color: currentHeroSlide.color,
+                textTransform: 'uppercase',
+                letterSpacing: '0.04em'
+              }}>
+                {currentHeroSlide.badge}
+              </span>
+            </div>
+
+            {/* Carousel Slide Controls */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <button
+                onClick={() => setActiveSlide(prev => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1))}
+                className="btn btn-sm btn-secondary"
+                style={{ padding: '0.35rem 0.6rem' }}
+                title="Previous Slide"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '0.8rem', color: '#0f172a' }}>
+                Slide {activeSlide + 1} of {HERO_SLIDES.length}
+              </span>
+              <button
+                onClick={() => setActiveSlide(prev => (prev + 1) % HERO_SLIDES.length)}
+                className="btn btn-sm btn-secondary"
+                style={{ padding: '0.35rem 0.6rem' }}
+                title="Next Slide"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          </div>
+
+          <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem', lineHeight: 1.3 }}>
+            {currentHeroSlide.title}
+          </h3>
+          <p style={{ fontSize: '0.95rem', color: '#334155', lineHeight: 1.6, marginBottom: '0.75rem' }}>
+            {currentHeroSlide.subtitle}
+          </p>
+          <div style={{ fontSize: '0.85rem', color: currentHeroSlide.color, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Sparkles size={14} />
+            <span>{currentHeroSlide.highlight}</span>
+          </div>
+
+          {/* Slide Indicator Dots */}
+          <div style={{ display: 'flex', gap: '0.4rem', marginTop: '1.25rem' }}>
+            {HERO_SLIDES.map((s, idx) => (
+              <button
+                key={s.id}
+                onClick={() => setActiveSlide(idx)}
+                style={{
+                  width: activeSlide === idx ? '28px' : '8px',
+                  height: '8px',
+                  borderRadius: '4px',
+                  background: activeSlide === idx ? currentHeroSlide.color : '#cbd5e1',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Dual Track Banner Grid */}

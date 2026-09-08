@@ -10,15 +10,21 @@ import {
   Send, 
   Layers, 
   Globe, 
-  Check 
+  Check,
+  Presentation,
+  ChevronLeft,
+  ChevronRight,
+  Eye
 } from 'lucide-react';
-import { INITIAL_TEAMS } from '../data/visaiData';
+import { INITIAL_TEAMS, TEAM_PITCH_SLIDES } from '../data/visaiData';
 
 export default function JuryDashboard() {
   const [teams, setTeams] = useState(INITIAL_TEAMS);
   const [selectedTeamId, setSelectedTeamId] = useState('team-101');
   const [activeRound, setActiveRound] = useState('Final Round');
   const [evalSuccess, setEvalSuccess] = useState(false);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [showPitchDeck, setShowPitchDeck] = useState(true);
 
   // Rubric Scores (0 - 20 each, Total 100)
   const [scores, setScores] = useState({
@@ -60,6 +66,7 @@ export default function JuryDashboard() {
   };
 
   const sortedLeaderboard = [...teams].sort((a, b) => b.finalScore - a.finalScore);
+  const activeSlide = TEAM_PITCH_SLIDES[activeSlideIndex];
 
   return (
     <div className="container" style={{ padding: '2.5rem 1.5rem' }}>
@@ -147,6 +154,113 @@ export default function JuryDashboard() {
           </div>
         </div>
       )}
+
+      {/* TEAM PITCH DECK SLIDE VIEWER FOR GRAND JURY */}
+      <div className="glass-card" style={{ padding: '2rem', background: '#ffffff', marginBottom: '2rem', border: '1px solid #cbd5e1' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ background: '#ede9fe', padding: '0.5rem', borderRadius: '10px', color: '#6d28d9' }}>
+              <Presentation size={20} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a' }}>
+                Candidate Pitch Deck Slides: {selectedTeam.teamName}
+              </h3>
+              <span style={{ fontSize: '0.8rem', color: '#64748b' }}>
+                Review live pitch presentation slides before assigning jury scores
+              </span>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <button
+              onClick={() => setActiveSlideIndex(prev => Math.max(0, prev - 1))}
+              disabled={activeSlideIndex === 0}
+              className="btn btn-sm btn-secondary"
+              style={{ opacity: activeSlideIndex === 0 ? 0.4 : 1 }}
+            >
+              <ChevronLeft size={16} />
+              <span>Prev Slide</span>
+            </button>
+            <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '0.85rem', color: '#0f172a', padding: '0 0.5rem' }}>
+              Slide {activeSlide.slideNumber} of {TEAM_PITCH_SLIDES.length}
+            </span>
+            <button
+              onClick={() => setActiveSlideIndex(prev => Math.min(TEAM_PITCH_SLIDES.length - 1, prev + 1))}
+              disabled={activeSlideIndex >= TEAM_PITCH_SLIDES.length - 1}
+              className="btn btn-sm btn-secondary"
+              style={{ opacity: activeSlideIndex >= TEAM_PITCH_SLIDES.length - 1 ? 0.4 : 1 }}
+            >
+              <span>Next Slide</span>
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+
+        {/* Slide Canvas */}
+        <div style={{
+          background: '#f8fafc',
+          border: '1px solid #e2e8f0',
+          borderRadius: '12px',
+          padding: '1.75rem',
+          minHeight: '220px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+            <span style={{
+              fontSize: '0.75rem',
+              fontWeight: 800,
+              color: '#6d28d9',
+              background: '#ede9fe',
+              padding: '0.2rem 0.6rem',
+              borderRadius: '9999px'
+            }}>
+              {activeSlide.badge}
+            </span>
+            <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
+              {activeSlide.subtitle}
+            </span>
+          </div>
+
+          <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem' }}>
+            {activeSlide.title}
+          </h4>
+          <p style={{ fontSize: '0.9rem', color: '#2563eb', fontWeight: 600, marginBottom: '1rem' }}>
+            "{activeSlide.content.tagline}"
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {activeSlide.content.bullets.map((b, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.875rem', color: '#334155' }}>
+                <span style={{ color: '#059669', fontWeight: 800 }}>✓</span>
+                <span>{b}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Thumbnail Selector */}
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', overflowX: 'auto', paddingBottom: '0.25rem' }}>
+          {TEAM_PITCH_SLIDES.map((s, idx) => (
+            <button
+              key={s.slideNumber}
+              onClick={() => setActiveSlideIndex(idx)}
+              style={{
+                padding: '0.3rem 0.65rem',
+                borderRadius: '6px',
+                border: `1px solid ${activeSlideIndex === idx ? '#6d28d9' : '#e2e8f0'}`,
+                background: activeSlideIndex === idx ? '#ede9fe' : '#ffffff',
+                color: activeSlideIndex === idx ? '#6d28d9' : '#64748b',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Slide {s.slideNumber}: {s.title.split(' ')[0]}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* Main Scoring Workspace & Leaderboard */}
       <div style={{

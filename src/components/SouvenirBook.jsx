@@ -11,9 +11,11 @@ import {
   Building, 
   Globe, 
   Download, 
-  CheckCircle,
-  FileCheck,
-  Search
+  CheckCircle, 
+  FileCheck, 
+  Search,
+  Layers,
+  Maximize2
 } from 'lucide-react';
 
 export default function SouvenirBook({ additionalArticles = [] }) {
@@ -48,7 +50,7 @@ export default function SouvenirBook({ additionalArticles = [] }) {
         <div className="section-header">
           <div className="badge-tag" style={{ background: '#fef3c7', color: '#b45309', borderColor: '#fde68a' }}>
             <BookOpen size={14} />
-            <span>Digital Publication System</span>
+            <span>Digital Publication System ({allArticles.length} Project Slides)</span>
           </div>
           <h2 className="section-title">
             VISAI 2027 <span className="gradient-text-amber">Innovation Souvenir</span> & Project Book
@@ -78,11 +80,11 @@ export default function SouvenirBook({ additionalArticles = [] }) {
               style={{ opacity: currentPage === 0 ? 0.4 : 1 }}
             >
               <ChevronLeft size={16} />
-              <span>Previous</span>
+              <span>Previous Slide</span>
             </button>
 
             <span style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0f172a', fontFamily: 'var(--font-mono)' }}>
-              Page {currentPage === 0 ? 'Cover' : `${currentPage} of ${totalPages - 1}`}
+              Slide {currentPage === 0 ? 'Cover' : `${currentPage} of ${totalPages - 1}`}
             </span>
 
             <button
@@ -91,7 +93,7 @@ export default function SouvenirBook({ additionalArticles = [] }) {
               className="btn btn-sm btn-secondary"
               style={{ opacity: currentPage >= totalPages - 1 ? 0.4 : 1 }}
             >
-              <span>Next</span>
+              <span>Next Slide</span>
               <ChevronRight size={16} />
             </button>
           </div>
@@ -118,6 +120,52 @@ export default function SouvenirBook({ additionalArticles = [] }) {
               <span>Print / Export PDF</span>
             </button>
           </div>
+        </div>
+
+        {/* Multi-Slide Navigation Ribbon */}
+        <div style={{
+          display: 'flex',
+          gap: '0.5rem',
+          overflowX: 'auto',
+          paddingBottom: '0.75rem',
+          marginBottom: '1.25rem'
+        }}>
+          <button
+            onClick={() => setCurrentPage(0)}
+            style={{
+              padding: '0.4rem 0.8rem',
+              borderRadius: '8px',
+              border: `1px solid ${currentPage === 0 ? '#d97706' : '#e2e8f0'}`,
+              background: currentPage === 0 ? '#fef3c7' : '#ffffff',
+              color: currentPage === 0 ? '#b45309' : '#475569',
+              fontWeight: 700,
+              fontSize: '0.78rem',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            📖 Cover & Editorial
+          </button>
+
+          {filteredArticles.map((art, idx) => (
+            <button
+              key={art.id}
+              onClick={() => setCurrentPage(idx + 1)}
+              style={{
+                padding: '0.4rem 0.8rem',
+                borderRadius: '8px',
+                border: `1px solid ${currentPage === idx + 1 ? '#2563eb' : '#e2e8f0'}`,
+                background: currentPage === idx + 1 ? '#eff6ff' : '#ffffff',
+                color: currentPage === idx + 1 ? '#1d4ed8' : '#475569',
+                fontWeight: 600,
+                fontSize: '0.78rem',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Slide {idx + 1}: {art.teamName}
+            </button>
+          ))}
         </div>
 
         {/* SOUVENIR VIEWER BOOK */}
@@ -198,7 +246,7 @@ export default function SouvenirBook({ additionalArticles = [] }) {
                   This official publication serves as a permanent, peer-reviewed innovation record of the solutions formulated during VISAI 2027. Moving beyond the conventional science fair format, student teams solved high-stakes problems provided by industry leaders such as Renault Nissan, Ashok Leyland, and L&T Valves, all systematically mapped to the United Nations Sustainable Development Goals.
                 </p>
                 <div style={{ fontSize: '0.825rem', color: '#64748b' }}>
-                  Compiled automatically through the <strong>VISAI 2027 Digital Innovation Lifecycle Engine</strong>.
+                  Compiled automatically through the <strong>VISAI 2027 Digital Innovation Lifecycle Engine</strong>. Includes {allArticles.length} curated innovation slides.
                 </div>
               </div>
 
@@ -206,13 +254,13 @@ export default function SouvenirBook({ additionalArticles = [] }) {
                 onClick={() => setCurrentPage(1)}
                 className="btn btn-lg btn-amber"
               >
-                <span>Open Project Compendium</span>
+                <span>Open Project Compendium (Slide 1)</span>
                 <ChevronRight size={18} />
               </button>
             </div>
           )}
 
-          {/* PAGE 1+: INDIVIDUAL PROJECT ABSTRACT */}
+          {/* PAGE 1+: INDIVIDUAL PROJECT ABSTRACT SLIDE */}
           {currentPage > 0 && currentArticle && (
             <div className="book-page-sheet" style={{ animation: 'fadeIn 0.3s ease-out' }}>
               

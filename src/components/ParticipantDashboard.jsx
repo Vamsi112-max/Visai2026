@@ -13,12 +13,18 @@ import {
   Wifi, 
   Download, 
   Send,
-  AlertCircle
+  AlertCircle,
+  ChevronLeft,
+  ChevronRight,
+  Presentation,
+  Check
 } from 'lucide-react';
+import { TEAM_PITCH_SLIDES } from '../data/visaiData';
 
 export default function ParticipantDashboard({ onPublishAbstractToSouvenir }) {
   const [activeTab, setActiveTab] = useState('abstract');
   const [submitted, setSubmitted] = useState(false);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   const [formData, setFormData] = useState({
     projectTitle: 'AcoustiCheck: Ultrasonic Valve Cavitation Diagnostics & Remaining Life Prediction',
@@ -61,6 +67,8 @@ export default function ParticipantDashboard({ onPublishAbstractToSouvenir }) {
       });
     }
   };
+
+  const currentSlide = TEAM_PITCH_SLIDES[currentSlideIndex];
 
   return (
     <div className="container" style={{ padding: '2.5rem 1.5rem' }}>
@@ -132,13 +140,21 @@ export default function ParticipantDashboard({ onPublishAbstractToSouvenir }) {
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2rem' }}>
+      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
         <button
           onClick={() => setActiveTab('abstract')}
           className={`btn ${activeTab === 'abstract' ? 'btn-primary' : 'btn-secondary'}`}
         >
           <FileText size={16} />
-          <span>Final Abstract Submission Form</span>
+          <span>Final Abstract Form</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('pitchdeck')}
+          className={`btn ${activeTab === 'pitchdeck' ? 'btn-primary' : 'btn-secondary'}`}
+        >
+          <Presentation size={16} />
+          <span>Project Pitch Deck (6 Slides)</span>
         </button>
 
         <button
@@ -146,7 +162,7 @@ export default function ParticipantDashboard({ onPublishAbstractToSouvenir }) {
           className={`btn ${activeTab === 'milestones' ? 'btn-primary' : 'btn-secondary'}`}
         >
           <Clock size={16} />
-          <span>4-Round Evaluation Milestones</span>
+          <span>4-Round Evaluation</span>
         </button>
 
         <button
@@ -154,9 +170,161 @@ export default function ParticipantDashboard({ onPublishAbstractToSouvenir }) {
           className={`btn ${activeTab === 'preview' ? 'btn-primary' : 'btn-secondary'}`}
         >
           <BookOpen size={16} />
-          <span>Live Souvenir Book Entry Preview</span>
+          <span>Souvenir Page Preview</span>
         </button>
       </div>
+
+      {/* TAB: PROJECT PITCH DECK SLIDES (6 Rich Slides) */}
+      {activeTab === 'pitchdeck' && (
+        <div className="glass-card" style={{ padding: '2.5rem', background: '#ffffff', marginBottom: '2rem' }}>
+          
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '1.25rem' }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2563eb', fontWeight: 700, fontSize: '0.825rem', marginBottom: '0.25rem' }}>
+                <Presentation size={16} />
+                <span>INTERACTIVE PITCH DECK • GRAND JURY PRESENTATION</span>
+              </div>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a' }}>
+                {currentSlide.title}
+              </h2>
+              <span style={{ fontSize: '0.9rem', color: '#64748b' }}>{currentSlide.subtitle}</span>
+            </div>
+
+            {/* Slide Controls */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <button
+                onClick={() => setCurrentSlideIndex(prev => Math.max(0, prev - 1))}
+                disabled={currentSlideIndex === 0}
+                className="btn btn-sm btn-secondary"
+                style={{ opacity: currentSlideIndex === 0 ? 0.4 : 1 }}
+              >
+                <ChevronLeft size={16} />
+                <span>Prev Slide</span>
+              </button>
+
+              <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '0.85rem', color: '#0f172a', padding: '0 0.5rem' }}>
+                Slide {currentSlide.slideNumber} / {TEAM_PITCH_SLIDES.length}
+              </span>
+
+              <button
+                onClick={() => setCurrentSlideIndex(prev => Math.min(TEAM_PITCH_SLIDES.length - 1, prev + 1))}
+                disabled={currentSlideIndex >= TEAM_PITCH_SLIDES.length - 1}
+                className="btn btn-sm btn-secondary"
+                style={{ opacity: currentSlideIndex >= TEAM_PITCH_SLIDES.length - 1 ? 0.4 : 1 }}
+              >
+                <span>Next Slide</span>
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          </div>
+
+          {/* Active Slide Screen Canvas */}
+          <div style={{
+            background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%)',
+            border: '2px solid #bfdbfe',
+            borderRadius: '16px',
+            padding: '2.5rem',
+            minHeight: '380px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            position: 'relative',
+            boxShadow: '0 10px 30px -5px rgba(37, 99, 235, 0.08)'
+          }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                <span style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 800,
+                  color: '#1d4ed8',
+                  background: '#ffffff',
+                  padding: '0.25rem 0.75rem',
+                  borderRadius: '9999px',
+                  border: '1px solid #bfdbfe'
+                }}>
+                  {currentSlide.badge}
+                </span>
+
+                <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
+                  Challenge: <code>{formData.problemCode}</code>
+                </span>
+              </div>
+
+              <div style={{
+                fontSize: '1.2rem',
+                fontWeight: 700,
+                color: '#1e293b',
+                lineHeight: 1.4,
+                marginBottom: '1.5rem'
+              }}>
+                "{currentSlide.content.tagline}"
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                {currentSlide.content.bullets.map((bullet, idx) => (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                    <div style={{
+                      width: '20px',
+                      height: '20px',
+                      borderRadius: '50%',
+                      background: '#2563eb',
+                      color: '#fff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                      marginTop: '2px'
+                    }}>
+                      <Check size={12} />
+                    </div>
+                    <span style={{ fontSize: '0.95rem', color: '#334155', lineHeight: 1.55 }}>
+                      {bullet}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Slide Footer */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingTop: '1.5rem',
+              borderTop: '1px solid #cbd5e1',
+              marginTop: '1.5rem',
+              fontSize: '0.8rem',
+              color: '#64748b'
+            }}>
+              <span>Team ByteCraft • Vel Tech R&D Institute of Science and Technology</span>
+              <span>VISAI 2027 Grand Jury Evaluation Deck</span>
+            </div>
+          </div>
+
+          {/* Slide Thumbnail Navigation Dots */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', marginTop: '1.5rem' }}>
+            {TEAM_PITCH_SLIDES.map((slide, i) => (
+              <button
+                key={slide.slideNumber}
+                onClick={() => setCurrentSlideIndex(i)}
+                style={{
+                  padding: '0.35rem 0.85rem',
+                  borderRadius: '6px',
+                  border: `1px solid ${currentSlideIndex === i ? '#2563eb' : '#cbd5e1'}`,
+                  background: currentSlideIndex === i ? '#eff6ff' : '#ffffff',
+                  color: currentSlideIndex === i ? '#1d4ed8' : '#64748b',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Slide {slide.slideNumber}
+              </button>
+            ))}
+          </div>
+
+        </div>
+      )}
 
       {/* TAB 1: FINAL ABSTRACT SUBMISSION FORM */}
       {activeTab === 'abstract' && (
@@ -277,7 +445,7 @@ export default function ParticipantDashboard({ onPublishAbstractToSouvenir }) {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group" style={{ gridColumn: '1 / -1' }}>
                 <label className="form-label">3. Technology Used</label>
                 <input
                   type="text"
@@ -337,10 +505,10 @@ export default function ParticipantDashboard({ onPublishAbstractToSouvenir }) {
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem', marginTop: '1.5rem' }}>
               <button
                 type="button"
-                onClick={() => setActiveTab('preview')}
+                onClick={() => setActiveTab('pitchdeck')}
                 className="btn btn-secondary"
               >
-                Preview Entry
+                View Pitch Deck Slides
               </button>
 
               <button type="submit" className="btn btn-primary">

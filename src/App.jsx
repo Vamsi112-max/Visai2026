@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DraftDataTicker from './components/DraftDataTicker';
 import CredentialsBanner from './components/CredentialsBanner';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -27,11 +28,13 @@ export default function App() {
   const handleSelectRole = (role) => {
     setCurrentRole(role);
     setActiveTab('portal');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLogout = () => {
     setCurrentRole(null);
     setActiveTab('overview');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handlePublishAbstractToSouvenir = (newArticle) => {
@@ -45,11 +48,17 @@ export default function App() {
   const handleTriggerSouvenirCompilation = () => {
     // simulated compilation action
     setActiveTab('souvenir');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
+      {/* 0. DRAFT DATA FEED TICKER ON TOP */}
+      <DraftDataTicker
+        onSelectRole={handleSelectRole}
+      />
+
       {/* 1. TOP FLOATING CREDENTIALS BANNER (Quick 1-Click Role Switcher) */}
       <CredentialsBanner
         currentRole={currentRole}

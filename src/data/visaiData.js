@@ -48,6 +48,15 @@ export const DEMO_CREDENTIALS = [
   }
 ];
 
+export const DRAFT_TICKER_DATA = [
+  { id: 'dt-1', type: 'DRAFT PS', code: 'VISAI-SDG06-IND01', title: 'Effluent AI Detection (Viruksa)', tag: 'Draft Problem' },
+  { id: 'dt-2', type: 'DRAFT SUBMISSION', code: 'VISAI-SDG07-IND02', title: 'Team VoltGuardians (Score: 97/100 • Grand Winner)', tag: 'Hardware MVP' },
+  { id: 'dt-3', type: 'DRAFT PS', code: 'VISAI-SDG09-IND03', title: 'Valve Ultrasonic Cavitation ML (L&T Valves)', tag: 'Software MVP' },
+  { id: 'dt-4', type: 'DRAFT SUBMISSION', code: 'VISAI-SDG11-IND04', title: 'Team RoboVanguard: SLAM AGV (Ashok Leyland)', tag: 'Hardware Pilot' },
+  { id: 'dt-5', type: 'DRAFT REVIEW', code: 'VISAI-SDG12-IND06', title: 'Team EcoSort: NIR Polymer Spectrometer', tag: 'Screening Stage' },
+  { id: 'dt-6', type: 'LIVE VENUE', code: 'HALL B / LAB 4', title: 'Maker Space & Soldering Rigs Ready (24/7 Grid)', tag: 'Logistics' }
+];
+
 export const SDG_LIST = [
   { id: 1, code: "SDG01", name: "No Poverty", color: "#E5243B", icon: "DollarSign" },
   { id: 2, code: "SDG02", name: "Zero Hunger", color: "#DDA63A", icon: "Utensils" },
@@ -182,6 +191,44 @@ export const INITIAL_PROBLEM_STATEMENTS = [
     industryOffer: "Pre-seed Incubation Funding + Commercial Licensing Discussion",
     dummyVersionAvailable: true,
     mentor: "Er. K. Balaji (Operations Lead, Turbo Energy)"
+  },
+  {
+    id: "ps-7",
+    code: "VISAI-SDG13-IND07",
+    title: "Hyperlocal Industrial Carbon Micro-Sequestration Telemetry & Carbon Credit Ledger",
+    track: "Software",
+    sdgId: 13,
+    sdgName: "Climate Action",
+    sdgCode: "SDG 13",
+    sdgColor: "#3F7E44",
+    industryPartner: "Tata Power & GreenTech Ventures",
+    releaseType: "On-Spot (Hackathon Venue)",
+    releaseStatus: "Released at Venue",
+    description: "Build a zero-knowledge verified carbon credit auditing pipeline analyzing rooftop solar and industrial heat recapture sensors against carbon offset exchanges.",
+    techStack: ["Rust", "FastAPI", "Polygon Blockchain", "React", "Grafana"],
+    impact: "Democratizes carbon credit certification for mid-sized manufacturers across Tamil Nadu.",
+    industryOffer: "₹60,000 Cash Grant + Direct Pilot with Tata Power Ventures",
+    dummyVersionAvailable: true,
+    mentor: "Dr. S. Jayakumar (Tata Power Clean Energy)"
+  },
+  {
+    id: "ps-8",
+    code: "VISAI-SDG02-IND08",
+    title: "Precision Autonomous Drone Pollination & Multispectral Soil Nitrate Analyzer",
+    track: "Hardware",
+    sdgId: 2,
+    sdgName: "Zero Hunger",
+    sdgCode: "SDG 02",
+    sdgColor: "#DDA63A",
+    industryPartner: "Mahindra & Mahindra Farm Equipment",
+    releaseType: "Released 7-10 Days Prior",
+    releaseStatus: "Available Now for Research & Architecture",
+    description: "Design a hexacopter drone equipped with optical flow cameras, electrostatic pollen sprayers, and down-facing NDVI multispectral soil sensors.",
+    techStack: ["Pixhawk 6X", "PX4 Autopilot", "Jetson Orin Nano", "Multispectral Camera"],
+    impact: "Increases crop yield by 24% and cuts synthetic fertilizer over-application by 35%.",
+    industryOffer: "Commercial Field Trial at Mahindra Ag-Tech Park + ₹1,00,000 Sponsorship",
+    dummyVersionAvailable: true,
+    mentor: "Er. P. Venkatesan (Mahindra Farm Equipment R&D)"
   }
 ];
 
@@ -299,6 +346,44 @@ export const INITIAL_TEAMS = [
     juryComments: "Initial PPT submitted, waiting for screening round validation.",
     abstractStatus: "Submitted (Pending Review)",
     hardwareSafetyApproved: false
+  },
+  {
+    id: "team-107",
+    teamName: "CarbonPulse",
+    institution: "IIT Madras Research Park / Anna University",
+    track: "Software",
+    leadName: "Kavya Sundaram",
+    email: "kavya.carbon@annauniv.edu",
+    members: ["Kavya Sundaram (Lead)", "Arun George (Blockchain)", "Nandini R (Fullstack)"],
+    status: "Shortlisted",
+    allocatedProblem: "VISAI-SDG13-IND07",
+    projectTitle: "PulseCarbon: Decentralized Industrial Offset Ledger",
+    round1Score: 18,
+    round2Score: 18,
+    round3Score: 19,
+    finalScore: 91,
+    juryComments: "Innovative integration of smart meters with zero-knowledge audit proofs.",
+    abstractStatus: "Approved for Souvenir",
+    hardwareSafetyApproved: true
+  },
+  {
+    id: "team-108",
+    teamName: "AgroAero Dynamics",
+    institution: "Tamil Nadu Agricultural University (TNAU)",
+    track: "Hardware",
+    leadName: "Manojkumar Selvan",
+    email: "manoj.agro@tnau.ac.in",
+    members: ["Manojkumar Selvan (Lead)", "Keerthana B (Avionics)", "Raghavan K (Agriculture)"],
+    status: "Shortlisted",
+    allocatedProblem: "VISAI-SDG02-IND08",
+    projectTitle: "AeroPollinate: Autonomous Electrostatic Hexacopter",
+    round1Score: 19,
+    round2Score: 18,
+    round3Score: 18,
+    finalScore: 93,
+    juryComments: "Outstanding live flight test inside Vel Tech sports arena. Great nozzle precision.",
+    abstractStatus: "Approved for Souvenir",
+    hardwareSafetyApproved: true
   }
 ];
 
@@ -382,6 +467,181 @@ export const SOUVENIR_ARTICLES = [
     expectedImpact: "Protects groundwater reserves surrounding industrial clusters and safeguards local farming communities.",
     industryRelevance: "Viruksa Engineering offered ₹50,000 pilot development contract and direct regulatory board integration trial.",
     futureScope: "Blockchain tamper-proof logging of effluent metrics for government environmental compliance audit."
+  },
+  {
+    id: "souvenir-05",
+    teamName: "AgroAero Dynamics",
+    institution: "Tamil Nadu Agricultural University (TNAU)",
+    track: "Hardware Track",
+    award: "Best Agri-Tech Hardware Award",
+    projectTitle: "AeroPollinate: Autonomous Electrostatic Hexacopter for Precision Agriculture",
+    problemCode: "VISAI-SDG02-IND08",
+    sdgGoal: "SDG 02 – Zero Hunger",
+    industryPartner: "Mahindra & Mahindra Farm Equipment",
+    teamMembers: "Manojkumar Selvan, Keerthana B, Raghavan K",
+    mentor: "Er. P. Venkatesan (Mahindra Farm Equipment)",
+    problemDescription: "Declining pollinator insect populations severely diminish fruit set in commercial apple, almond, and pomegranate orchards, causing up to 30% yield deficits.",
+    proposedSolution: "A custom hexacopter drone equipped with electrostatic induction charging rings that impart opposite electrical charges to aerosolized pollen grains, guaranteeing adherence to floral stigmas during sub-meter GPS waypoints.",
+    technologyUsed: "Pixhawk 6X Autopilot, Jetson Orin Nano, High Voltage DC Generator, Ultrasonic Proximity Sensors, Carbon Fiber Hexacopter Frame.",
+    innovation: "Real-time flower blossom detection using YOLO-NAS on drone edge processor, spraying only when centered over active blossoms.",
+    expectedImpact: "Achieves 92% blossom fertilization rate while reducing pollen waste by 60% compared to ground blowers.",
+    industryRelevance: "Mahindra Ag-Tech leadership invited team for commercial orchard trials in Maharashtra and offered ₹1,00,000 grant.",
+    futureScope: "Swarm autonomy allowing 4 drones to pollinate 20-acre commercial farms cooperatively in 3 hours."
+  },
+  {
+    id: "souvenir-06",
+    teamName: "CarbonPulse",
+    institution: "IIT Madras Research Park / Anna University",
+    track: "Software Track",
+    award: "Grand Finale Runner-Up • Software Track",
+    projectTitle: "PulseCarbon: Decentralized Industrial Offset Ledger & Zero-Knowledge Verification",
+    problemCode: "VISAI-SDG13-IND07",
+    sdgGoal: "SDG 13 – Climate Action",
+    industryPartner: "Tata Power & GreenTech Ventures",
+    teamMembers: "Kavya Sundaram, Arun George, Nandini R",
+    mentor: "Dr. S. Jayakumar (Tata Power Clean Energy)",
+    problemDescription: "Mid-sized factories generate carbon credits from green energy installations but cannot afford expensive third-party international auditing firms to certify their offsets.",
+    proposedSolution: "PulseCarbon connects smart electric meters and solar inverters to cryptographic Zero-Knowledge proof generators (zk-SNARKs) that prove energy reduction without revealing proprietary factory operating volume.",
+    technologyUsed: "Rust, Circom, Polygon zkEVM, Next.js 15, TimescaleDB, Python FastAPI, WebSockets.",
+    innovation: "Instantaneous cryptographic verification of renewable kilowatt-hours directly on public blockchain ledgers without manual audits.",
+    expectedImpact: "Cuts carbon credit verification timeline from 8 months to 15 seconds, unlocking green finance for MSMEs.",
+    industryRelevance: "Selected by Tata Power Clean Energy team for pilot integration across 10 commercial industrial clusters.",
+    futureScope: "Cross-border tokenized carbon credit trading platform compliant with Article 6 of Paris Climate Agreement."
+  },
+  {
+    id: "souvenir-07",
+    teamName: "NeuralHealth",
+    institution: "SRM Institute of Science and Technology",
+    track: "Software Track",
+    award: "Healthcare Innovation Award",
+    projectTitle: "Sanjeevani AI: Offline-First Edge Triage & Telemedicine Telemetry",
+    problemCode: "VISAI-SDG03-IND05",
+    sdgGoal: "SDG 03 – Good Health and Well-being",
+    industryPartner: "HealthTech Innovations & Vel Tech Medical Research",
+    teamMembers: "Shreya Verma, Kavitha R, Abhishek Jain",
+    mentor: "Dr. Meenakshi Sundaram (Vel Tech Medical)",
+    problemDescription: "Rural health clinics lack full-time doctors; community health workers struggle to accurately screen diabetic retinopathy, cardiac arrhythmias, and respiratory illness with basic vitals.",
+    proposedSolution: "A portable Android tablet suite running quantised ONNX neural models locally without internet, parsing fundus photo uploads and digital stethoscope wav audio in under 1.2 seconds.",
+    technologyUsed: "TensorFlow Lite, Kotlin, SQLite, Whisper AI Speech-to-Text, WebRTC Store-and-Forward Sync.",
+    innovation: "Multi-modal disease risk aggregation generating localized vernacular audio summaries for patient comprehension.",
+    expectedImpact: "Early detection of cardiovascular and diabetic symptoms for over 50,000 rural residents in pilot taluks.",
+    industryRelevance: "Vel Tech TBI allocated ₹30,000 seed incubation stipend and assigned clinical trial mentors.",
+    futureScope: "Wearable ECG patch telemetry integration with automated SMS dispatch to district medical headquarters."
+  },
+  {
+    id: "souvenir-08",
+    teamName: "EcoSort Innovations",
+    institution: "SASTRA Deemed University, Thanjavur",
+    track: "Hardware Track",
+    award: "Circular Economy Award",
+    projectTitle: "SpectraSort: High-Speed NIR Polymer Separation Device",
+    problemCode: "VISAI-SDG12-IND06",
+    sdgGoal: "SDG 12 – Responsible Consumption & Production",
+    industryPartner: "Turbo Energy Private Limited",
+    teamMembers: "Venkatesh Rao, Manish Sundar, Pooja Hegde",
+    mentor: "Er. K. Balaji (Operations Lead, Turbo Energy)",
+    problemDescription: "Manual plastic sorting cannot distinguish clear PET bottles from clear PVC or HDPE flocs, causing entire recycling batches to contaminate during remelting.",
+    proposedSolution: "An automated conveyor belt featuring a tungsten-halogen illumination array and near-infrared reflectance spectrometer coupled to a high-speed pneumatic jet array operating at 400ms intervals.",
+    technologyUsed: "Arduino GIGA R1 WiFi, NIR Spectrometer, SMC High-Speed Solenoid Valves, OpenCV, Custom Aluminium Chassis.",
+    innovation: "Near-infrared absorption fingerprinting capable of identifying 7 distinct polymer classes at 2.4 meters/second conveyor velocity.",
+    expectedImpact: "Boosts post-consumer resin purity to 98.6%, drastically increasing commercial re-granulate market value.",
+    industryRelevance: "Turbo Energy extended pilot discussion for implementation in campus industrial cafeteria recycling stations.",
+    futureScope: "Integration into municipal MRF (Materials Recovery Facility) sorting lines with optical colour sorter attachment."
+  }
+];
+
+export const TEAM_PITCH_SLIDES = [
+  {
+    slideNumber: 1,
+    title: "Project Overview & Executive Summary",
+    subtitle: "AcoustiCheck: Ultrasonic Valve Cavitation Diagnostics",
+    badge: "Slide 1 of 6 • Executive Brief",
+    content: {
+      tagline: "Preventing Catastrophic Pipeline Failures with Non-Invasive Acoustic Machine Learning",
+      team: "Team ByteCraft • Vel Tech R&D Institute",
+      challenge: "VISAI-SDG09-IND03 (Larsen & Toubro Valves)",
+      bullets: [
+        "High-pressure steam & hydro valves suffer from silent cavitation erosion that costs millions in unannounced plant shutdowns.",
+        "AcoustiCheck delivers non-invasive clamp ultrasonic sensors + 1D-ResNet WebAssembly inference directly in browser.",
+        "Zero-cloud dependency: works 100% offline inside isolated refinery control rooms."
+      ]
+    }
+  },
+  {
+    slideNumber: 2,
+    title: "Industry Problem Statement & Impact",
+    subtitle: "The Multi-Million Dollar Cavitation Crisis",
+    badge: "Slide 2 of 6 • Problem Analysis",
+    content: {
+      tagline: "L&T Valves Challenge: Predicting Wear Before Structural Breach",
+      challenge: "UN SDG 09: Industry, Innovation & Infrastructure",
+      bullets: [
+        "Cavitation micro-jets generate localized pressures up to 1,000 MPa, eroding valve seats within weeks.",
+        "Existing vibration sensors only trigger after massive mechanical imbalance is already irreversible.",
+        "Refinery downtime costs range from ₹15 Lakhs to ₹1.2 Crores per day during emergency pipeline isolation.",
+        "Target: Sub-millisecond acoustic transient detection between 20kHz – 100kHz frequency bands."
+      ]
+    }
+  },
+  {
+    slideNumber: 3,
+    title: "Technical Architecture & Sensor Interfacing",
+    subtitle: "End-to-End Edge Telemetry & WebAssembly Pipeline",
+    badge: "Slide 3 of 6 • System Architecture",
+    content: {
+      tagline: "Non-Invasive Acoustic Piezo Clamp -> ADC -> WASM Tensor Engine",
+      bullets: [
+        "Acoustic Emission Pickup: PZT clamp sensor attached to valve neck (no pipeline drilling required).",
+        "Signal Processing: 250kS/s high-speed sampling with continuous STFT spectrogram transformation.",
+        "Machine Learning Model: 1D-ResNet compressed to 4.2MB ONNX runtime running inside client web workers via WASM.",
+        "Real-Time Visualization: 60fps spectrogram waterfall rendered on HTML5 canvas with zero server lag."
+      ]
+    }
+  },
+  {
+    slideNumber: 4,
+    title: "Working Solution & Live Benchmarks",
+    subtitle: "Empirical Results Tested on L&T Valve Rig",
+    badge: "Slide 4 of 6 • Prototype Demonstration",
+    content: {
+      tagline: "96.4% Cavitation Classification Accuracy with <12ms Latency",
+      bullets: [
+        "Tested across 4 operating regimes: Laminar Flow, Incipient Cavitation, Developed Cavitation, Flashing.",
+        "Inference Speed: 8.4ms per audio chunk on standard workstation browser.",
+        "False Positive Rate: <1.2% in presence of background industrial pump acoustic noise.",
+        "Remaining Useful Life (RUL) estimator predicts valve seat failure within ±14 days precision."
+      ]
+    }
+  },
+  {
+    slideNumber: 5,
+    title: "SDG 09 Impact & Commercial Feasibility",
+    subtitle: "Resilient Infrastructure & Measurable Economic Returns",
+    badge: "Slide 5 of 6 • Impact & ROI",
+    content: {
+      tagline: "Direct Cost Savings for Chemical Plants & Energy Grids",
+      bullets: [
+        "Reduces emergency valve replacement frequency by 40%.",
+        "Prevents toxic chemical pipeline leaks into surrounding agricultural zones (SDG 06 & SDG 09 synergy).",
+        "Low installation cost: ₹18,000 per sensing node vs ₹6,50,000 for inline ultrasonic flowmeters.",
+        "Scalable across 140+ manufacturing installations in Tamil Nadu industrial corridors."
+      ]
+    }
+  },
+  {
+    slideNumber: 6,
+    title: "Patent Potential, Incubation & Future Roadmap",
+    subtitle: "From VISAI 2027 Hackathon to Commercial Enterprise",
+    badge: "Slide 6 of 6 • Future Roadmap",
+    content: {
+      tagline: "Patent Filing Supported by Vel Tech TBI & Industry Pilot with L&T",
+      bullets: [
+        "Patent Scope: 'Method and apparatus for non-invasive acoustic classification of high-pressure fluid cavitation using client-side edge tensor inference'.",
+        "Incubation: Accepted into Vel Tech Technology Business Incubator (TBI) with ₹5 Lakhs seed grant eligibility.",
+        "Phase 2 Roadmap: Porting inference model to ARM Cortex-M55 microcontrollers for direct valve head mounting.",
+        "Malaysia International Presentation: Selected by Vel Tech Grand Jury to present research findings abroad."
+      ]
+    }
   }
 ];
 
